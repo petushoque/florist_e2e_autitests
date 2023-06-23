@@ -1,14 +1,11 @@
-import time
-
-import selenium
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
+
 from base.base_class import Base
 
 
-class Main_page(Base):
-
+class MainPage(Base):
     url = 'https://www.florist.ru/'
 
     def __init__(self, driver):
@@ -23,14 +20,13 @@ class Main_page(Base):
 
     # Getters
     def get_flowers_filter_button(self):
-        return WebDriverWait(self.driver, 10)\
+        return WebDriverWait(self.driver, 10) \
             .until(EC.element_to_be_clickable((By.XPATH, self.flowers_filter_loc)))
 
     ###
     def get_location_popup_yes_button(self):
-        return WebDriverWait(self.driver, 10)\
+        return WebDriverWait(self.driver, 10) \
             .until(EC.element_to_be_clickable((By.XPATH, self.get_location_popup_yes_button())))
-
 
     # Methods
     def click_on_flowers_filter_button(self):
@@ -42,5 +38,6 @@ class Main_page(Base):
         self.driver.maximize_window()
 
         self.confirm_location()
+        self.get_current_url()
 
-        #self.click_on_flowers_filter_button()
+        # self.click_on_flowers_filter_button()

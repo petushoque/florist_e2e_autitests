@@ -16,4 +16,4 @@ pip freeze > requirements.txt
 
 # Run tests
 
-pytest
+pytest -s -v

@@ -32,3 +32,8 @@ class Base:
         # Actions
         click_on_location_selector()
         click_on_location_selector_moscow()
+
+    def get_current_url(self):
+        get_url = self.driver.current_url
+        print('Current url: ' + get_url)
+        return get_url
