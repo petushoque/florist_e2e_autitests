@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
@@ -13,24 +15,22 @@ class MainPage(Base):
         self.driver = driver
 
     # Locators
-    flowers_filter_loc = '//span[@class="_38kMiofv"]'
-
-    ###
-    location_popup_yes_button_loc = '//span[@class="_1Ixozll0"]'
+    flowers_filter_loc = '//div[@class="_2d6Gofi1"]'
+    flowers_filter_cvety_option_loc = '//a[text()="Цветы"]'
 
     # Getters
-    def get_flowers_filter_button(self):
+    def get_flowers_filter(self):
         return WebDriverWait(self.driver, 10) \
             .until(EC.element_to_be_clickable((By.XPATH, self.flowers_filter_loc)))
-
-    ###
-    def get_location_popup_yes_button(self):
+    def get_flowers_filter_cvety_option(self):
         return WebDriverWait(self.driver, 10) \
-            .until(EC.element_to_be_clickable((By.XPATH, self.get_location_popup_yes_button())))
+            .until(EC.element_to_be_clickable((By.XPATH, self.flowers_filter_cvety_option_loc)))
 
     # Methods
-    def click_on_flowers_filter_button(self):
-        self.get_flowers_filter_button().click()
+    def click_on_flowers_filter(self):
+        self.get_flowers_filter().click()
+    def click_on_flowers_filter_cvety_option(self):
+        self.get_flowers_filter_cvety_option().click()
 
     # Actions
     def open_main_page(self):
@@ -39,5 +39,6 @@ class MainPage(Base):
 
         self.confirm_location()
         self.get_current_url()
+        self.click_on_flowers_filter()
+        self.click_on_flowers_filter_cvety_option()
 
-        # self.click_on_flowers_filter_button()
